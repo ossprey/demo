@@ -4,6 +4,7 @@ import requests
 
 def fetch_posts():
     url = "https://jsonplaceholder.typicode.com/posts"
+    print("Running request")
     try:
         # Sending a GET request to the API
         response = requests.get(url)
