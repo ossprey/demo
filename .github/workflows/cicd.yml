@@ -1,0 +1,33 @@
+name: CICD - Test Code
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Scan Simple Math for Malware
+        uses: OSSPREY-Security/gh-action@1.0.0
+        with:
+          package: "simple_math"
+          pipenv: true
+          dry_run: true
+
+      - name: Scan Compromised package for Malware
+        uses: OSSPREY-Security/gh-action@1.0.0
+        with:
+          package: "simple_math"
+          requirements: true
+          dry_run: true
