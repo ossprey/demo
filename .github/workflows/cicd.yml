@@ -13,20 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.12'
-
       - name: Scan Simple Math for Malware
-        uses: OSSPREY-Security/gh-action@v1.0.0
+        uses: OSSPREY-Security/gh-action@main
         with:
           package: "simple_math"
           pipenv: true
           dry_run: true
 
       - name: Scan Compromised package for Malware
-        uses: OSSPREY-Security/gh-action@v1.0.0
+        uses: OSSPREY-Security/gh-action@main
         with:
           package: "compromised_package"
           requirements: true
