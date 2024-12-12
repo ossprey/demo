@@ -28,6 +28,6 @@ jobs:
       - name: Scan Compromised package for Malware
         uses: OSSPREY-Security/gh-action@1.0.0
         with:
-          package: "simple_math"
+          package: "compromised_package"
           requirements: true
           dry_run: true
