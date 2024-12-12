@@ -18,11 +18,9 @@ jobs:
         with:
           package: "simple_math"
           pipenv: true
-          dry_run: true
 
       - name: Scan Compromised package for Malware
         uses: OSSPREY-Security/gh-action@main
         with:
           package: "compromised_package"
           requirements: true
-          dry_run: true
