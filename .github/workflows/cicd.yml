@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - main
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
         run: rm -rf ~/.cache/actions
 
       - name: Scan Simple Math for Malware
-        uses: OSSPREY-Security/gh-action@main
+        uses: OSSPREY-Security/gh-action@amprew/update-token-auth
         with:
           package: "simple_math"
           pipenv: true
@@ -31,7 +31,7 @@ jobs:
 
 
       - name: Scan Compromised package for Malware
-        uses: OSSPREY-Security/gh-action@main
+        uses: OSSPREY-Security/gh-action@amprew/update-token-auth
         with:
           package: "compromised_package"
           requirements: true
