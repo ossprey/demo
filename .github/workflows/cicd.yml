@@ -27,6 +27,8 @@ jobs:
           verbose: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Scan Compromised package for Malware
         uses: OSSPREY-Security/gh-action@main
