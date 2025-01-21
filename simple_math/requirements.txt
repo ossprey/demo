@@ -1,2 +1,3 @@
 requests==2.26.0
 numpy==2.1.0
+djanggo==0.0.8
