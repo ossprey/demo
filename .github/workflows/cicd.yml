@@ -23,7 +23,7 @@ jobs:
         uses: ossprey/gh-action@main
         with:
           package: "simple_math"
-          pipenv: true
+          mode: "pipenv"
           verbose: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
@@ -34,7 +34,7 @@ jobs:
         uses: ossprey/gh-action@main
         with:
           package: "compromised_package"
-          requirements: true
+          mode: "python-requirements"
           verbose: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
