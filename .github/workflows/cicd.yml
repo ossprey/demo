@@ -19,28 +19,6 @@ jobs:
       - name: Clear GitHub Actions cache
         run: rm -rf ~/.cache/actions
 
-      - name: Scan Python package for Malware
-        uses: ossprey/gh-action@main
-        with:
-          package: "python/simple_math"
-          mode: "pipenv"
-          verbose: true
-        env:
-          API_KEY: ${{ secrets.OSSPREY_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-      - name: Scan Compromised python package for Malware
-        uses: ossprey/gh-action@main
-        with:
-          package: "python/compromised_package"
-          mode: "python-requirements"
-          verbose: true
-        env:
-          API_KEY: ${{ secrets.OSSPREY_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
       - name: Scan NPM package for Malware
         uses: ossprey/gh-action@main
         with:
@@ -51,12 +29,31 @@ jobs:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Scan Yarn package for Malware
         uses: ossprey/gh-action@main
         with:
           package: "javascript/yarn_simple_math"
           mode: "yarn"
+          verbose: true
+        env:
+          API_KEY: ${{ secrets.OSSPREY_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Scan Python package for Malware
+        uses: ossprey/gh-action@main
+        with:
+          package: "python/simple_math"
+          mode: "pipenv"
+          verbose: true
+        env:
+          API_KEY: ${{ secrets.OSSPREY_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Scan Compromised python package for Malware
+        uses: ossprey/gh-action@main
+        with:
+          package: "python/compromised_package"
+          mode: "python-requirements"
           verbose: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
