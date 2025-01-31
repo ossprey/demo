@@ -1,6 +1,6 @@
 # Simple Math Project
 
-This project implements basic mathematical operations including addition, subtraction, multiplication, and division. It also includes unit tests to verify the correctness of these operations.
+This project implements basic mathematical operations including addition, subtraction, multiplication, and division. It also includes unit tests to verify the correctness of these operations!
 
 ## Project Structure
 
