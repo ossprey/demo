@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1.7
+
 # Use official Python image
 FROM python:3.12-slim
 
@@ -15,8 +17,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py ./
 
 # ----- Run OSSPREY Scan -----
+	
 RUN pip install --no-cache-dir git+https://github.com/ossprey/ossprey-python-client.git@docker
-RUN python -m ossprey --mode fs --dir '/' --verbose
+RUN --mount=type=secret,id=ossprey_api_key \
+    API_KEY="$(cat /run/secrets/ossprey_api_key)" python -u -m ossprey --mode fs --dir / --verbose
 # TODO attach SBOM for BuildKit attestations (if using buildx)
 # TODO LABEL org.opencontainers.image.sbom=/tmp/sbom.spdx.json
 
