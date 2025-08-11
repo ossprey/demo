@@ -1,20 +1,12 @@
-# syntax=docker/dockerfile:1.7
+## syntax=docker/dockerfile:1.7
 
-# Use official Python image
-FROM python:3.12-slim AS base
-
-# Install build tools for dependencies if needed (libsodium for ed25519 may be required by solana-py)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-	build-essential \
-	pkg-config \
-	libsodium23 \
-	git \
-	&& rm -rf /var/lib/apt/lists/*
-
+FROM node:22-alpine AS base
 WORKDIR /app
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-COPY main.py ./
+
+COPY package.json ./
+RUN npm install --omit=dev
+
+COPY src ./src
 
 # --- Scanner stage: does NOT contaminate what is scanned ---
 FROM python:3.12-alpine AS scanner
@@ -28,13 +20,15 @@ RUN --mount=type=secret,id=ossprey_api_key \
       API_KEY="$(cat /run/secrets/ossprey_api_key)" \
       python -u -m ossprey --mode fs --dir /scanfs --verbose && \
       mkdir -p /scan-result && echo passed > /scan-result/passed'
-# TODO attach SBOM for BuildKit attestations (if using buildx)
-# TODO fix location return from scanning
-# TODO LABEL org.opencontainers.image.sbom=/tmp/sbom.spdx.json
 
 # --- Final image ---
 FROM base AS final
 COPY --from=scanner /scan-result/passed /scan-result/passed
 
-EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV NODE_ENV=production \
+    PORT=3000
+
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 CMD node src/healthcheck.js || exit 1
+
+CMD ["node", "src/index.js"]

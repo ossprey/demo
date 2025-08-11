@@ -29,7 +29,6 @@ RUN --mount=type=secret,id=ossprey_api_key \
       python -u -m ossprey --mode fs --dir /scanfs --verbose && \
       mkdir -p /scan-result && echo passed > /scan-result/passed'
 # TODO attach SBOM for BuildKit attestations (if using buildx)
-# TODO fix location return from scanning
 # TODO LABEL org.opencontainers.image.sbom=/tmp/sbom.spdx.json
 
 # --- Final image ---
