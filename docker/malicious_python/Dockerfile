@@ -20,6 +20,13 @@ COPY main.py ./
 FROM python:3.12-alpine AS scanner
 RUN apk add --no-cache git
 RUN python -m venv /opt/venv
+
+# Set up to use QA
+#ENV USER_POOL_DOMAIN=eu-west-1m9quj8fob \
+#  CLIENT_ID=30vo0tndo8oe5iurnib2q14l6s \
+#  REGION=eu-west-1 \
+#  INPUT_URL=https://api.qa.ossprey.com
+
 # Mount the entire root fs of `base` at /scanfs (read-only) and scan that.
 RUN --mount=type=secret,id=ossprey_api_key \
     --mount=type=bind,from=base,source=/,target=/scanfs,ro \
