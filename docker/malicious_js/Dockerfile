@@ -3,6 +3,9 @@
 FROM node:22-alpine AS base
 WORKDIR /app
 
+RUN apk add --no-cache build-base pkgconf libsodium git ca-certificates openssh-client
+
+
 COPY package.json ./
 RUN npm install --omit=dev
 

