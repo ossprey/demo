@@ -33,9 +33,6 @@ RUN --mount=type=secret,id=ossprey_api_key \
     /bin/sh -lc '. /opt/venv/bin/activate && \
       pip install --no-cache-dir git+https://github.com/ossprey/ossprey-python-client.git@docker && \
       API_KEY="$(cat /run/secrets/ossprey_api_key)" \
-      INPUT_URL=https://api.qa.ossprey.com \
-      USER_POOL_DOMAIN="eu-west-1m9quj8fob" \
-      CLIENT_ID="30vo0tndo8oe5iurnib2q14l6s" \
       python -u -m ossprey --mode fs --dir /scanfs --verbose && \
       mkdir -p /scan-result && echo passed > /scan-result/passed'
 # TODO attach SBOM for BuildKit attestations (if using buildx)
