@@ -19,7 +19,7 @@ RUN python -m venv /opt/venv
 RUN --mount=type=secret,id=ossprey_api_key \
     --mount=type=bind,from=base,source=/,target=/scanfs,ro \
     /bin/sh -lc '. /opt/venv/bin/activate && \
-      pip install --no-cache-dir git+https://github.com/ossprey/ossprey-python-client.git@docker && \
+      pip install --no-cache-dir ossprey && \
       API_KEY="$(cat /run/secrets/ossprey_api_key)" \
       python -u -m ossprey --mode fs --dir /scanfs --verbose && \
       mkdir -p /scan-result && echo passed > /scan-result/passed'
