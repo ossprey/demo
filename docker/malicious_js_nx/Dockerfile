@@ -7,7 +7,15 @@ RUN apk add --no-cache build-base pkgconf libsodium git ca-certificates openssh-
 
 
 COPY package.json ./
-RUN npm install --omit=dev
+# Shame hack for RUN npm install --omit=dev to be able to install private GH repos
+RUN --mount=type=secret,id=gh_token \
+    set -e; mkdir -p /tmp/gh && chmod 700 /tmp/gh; \
+    T="$(cat /run/secrets/gh_token)"; \
+    printf "machine github.com\n  login x-access-token\n  password %s\n" "$T" > /tmp/gh/.netrc; \
+    chmod 600 /tmp/gh/.netrc; \
+    HOME=/tmp/gh npm install --omit=dev; \
+    rm -rf /tmp/gh
+
 
 COPY src ./src
 
