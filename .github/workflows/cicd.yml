@@ -25,6 +25,7 @@ jobs:
           package: "python/simple_math"
           mode: "pipenv"
           verbose: true
+          dry_run_safe: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,6 +36,7 @@ jobs:
           package: "python/compromised_package"
           mode: "python-requirements"
           verbose: true
+          dry_run_malicious: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,6 +60,7 @@ jobs:
           package: "javascript/npm_simple_math"
           mode: "npm"
           verbose: true
+          dry_run_safe: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -69,6 +72,7 @@ jobs:
           mode: "yarn"
           verbose: true
           soft_error: true
+          dry_run_safe: true
         env:
           API_KEY: ${{ secrets.OSSPREY_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
