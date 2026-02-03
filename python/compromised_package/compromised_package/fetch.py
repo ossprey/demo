@@ -5,7 +5,7 @@ import requests
 def fetch_posts():
     url = "https://jsonplaceholder.typicode.com/posts"
     try:
-        # Sending a GET request to the API
+        # Sending a GET request to the API!!
         response = requests.get(url)
         
         # Check if the request was successful (status code 200)
