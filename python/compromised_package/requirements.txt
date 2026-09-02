@@ -1,2 +1,3 @@
 numpy==2.0.2
 djanggo==0.0.8
+pandas==2.2.3
