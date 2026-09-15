@@ -20,7 +20,7 @@ jobs:
         run: rm -rf ~/.cache/actions
 
       - name: Scan Python package for Malware
-        uses: ossprey/gh-action@main
+        uses: ossprey/gh-action@f90729e00ad9bd5c9a34edeb086cb2ec89f0d044 # main as of 2026-09-11
         with:
           package: "python/simple_math"
           mode: "pipenv"
@@ -31,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Scan Compromised python package for Malware
-        uses: ossprey/gh-action@main
+        uses: ossprey/gh-action@f90729e00ad9bd5c9a34edeb086cb2ec89f0d044 # main as of 2026-09-11
         with:
           package: "python/compromised_package"
           mode: "python-requirements"
@@ -55,7 +55,7 @@ jobs:
         run: rm -rf ~/.cache/actions
 
       - name: Scan NPM package for Malware
-        uses: ossprey/gh-action@main
+        uses: ossprey/gh-action@f90729e00ad9bd5c9a34edeb086cb2ec89f0d044 # main as of 2026-09-11
         with:
           package: "javascript/npm_simple_math"
           mode: "npm"
@@ -66,7 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Scan Yarn package for Malware
-        uses: ossprey/gh-action@main
+        uses: ossprey/gh-action@f90729e00ad9bd5c9a34edeb086cb2ec89f0d044 # main as of 2026-09-11
         with:
           package: "javascript/yarn_simple_math"
           mode: "yarn"

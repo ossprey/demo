@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Scan Package for Malware
-        uses: ossprey/gh-action@main
+        uses: ossprey/gh-action@f90729e00ad9bd5c9a34edeb086cb2ec89f0d044 # main as of 2026-09-11
         with:
           package: python/simple_math
           mode: python-requirements
